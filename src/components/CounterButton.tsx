@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CounterButton = ({ color }) => {
+const CounterButton = ({ color }: {color: string}) => {
   const [count, setCount] = useState(0);
   return (
     <button

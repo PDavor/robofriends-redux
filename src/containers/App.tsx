@@ -1,11 +1,12 @@
-import React from "react";
+import { ChangeEvent } from "react";
 import MainPage from "../components/MainPage";
 import "./App.css";
 import { connect } from "react-redux";
 import { setSearchField, requestRobots } from "../actions";
-import CounterButton from "../components/CounterButton";
+import { IAppProps } from "../utils/types";
+import { IState, IStore } from "../reducers";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: IState) => {
   return {
     searchField: state.searchRobots.searchField,
     robots: state.requestRobots.robots,
@@ -14,14 +15,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    onSearchChange: (e) => dispatch(setSearchField(e.target.value)),
+    onSearchChange: (e: ChangeEvent<HTMLInputElement>) => dispatch(setSearchField(e.target.value)),
     onRequestRobots: () => dispatch(requestRobots()),
   };
 };
 
-function App(props) {
+function App(props: IAppProps) {
   return <MainPage {...props} />;
 }
 

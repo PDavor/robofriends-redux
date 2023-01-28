@@ -1,5 +1,4 @@
 import React from "react";
-// import ReactDOM from 'react-dom'; The new way to import createRoot:
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./containers/App";
@@ -20,7 +19,10 @@ const store = legacy_createStore(
   applyMiddleware(thunkMiddleware, logger)
 );
 
-const root = createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = createRoot(rootElement);
+
 root.render(
   <Provider store={store}>
     <App />

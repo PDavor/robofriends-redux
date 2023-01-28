@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
-import CardList from "../components/CardList";
-import SearchBox from "../components/SearchBox";
-import Scroll from "../components/Scroll";
+import React, { useState, useEffect, ChangeEventHandler } from "react";
+import CardList from "./CardList";
+import SearchBox from "./SearchBox";
+import Scroll from "./Scroll";
 import "./MainPage.css";
-import CounterButton from "../components/CounterButton";
+import CounterButton from "./CounterButton";
+import { IAppProps, IRobot } from "../utils/types";
 
-function MainPage(props) {
+function MainPage(props: IAppProps) {
   const { searchField, onSearchChange, robots, isPending, onRequestRobots } =
     props;
   useEffect(() => {
     onRequestRobots();
   }, []);
 
-  const filteredRobots = robots.filter((robot) => {
+  const filteredRobots = robots.filter((robot: IRobot) => {
     return robot.name.toLowerCase().includes(searchField.toLowerCase());
   });
 

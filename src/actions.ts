@@ -1,3 +1,4 @@
+import { Dispatch } from "redux";
 import { apiCall } from "./api/api";
 import {
   CHANGE_SEARCH_FIELD,
@@ -6,12 +7,17 @@ import {
   REQUEST_ROBOTS_FAILED,
 } from "./constants";
 
-export const setSearchField = (text) => ({
+export interface ISetSearchField {
+  type: string;
+  payload: string;
+}
+
+export const setSearchField = (text: string) => ({
   type: CHANGE_SEARCH_FIELD,
   payload: text,
 });
 
-export const requestRobots = () => (dispatch) => {
+export const requestRobots = () => (dispatch: Dispatch) => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
   apiCall("https://jsonplaceholder.typicode.com/users")
     .then((data) => dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }))
