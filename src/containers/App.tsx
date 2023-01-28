@@ -4,7 +4,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import { setSearchField, requestRobots } from "../actions";
 import { IAppProps } from "../utils/types";
-import { IState, IStore } from "../reducers";
+import { IState } from "../reducers";
 
 const mapStateToProps = (state: IState) => {
   return {

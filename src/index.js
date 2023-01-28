@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { legacy_createStore, applyMiddleware, combineReducers } from "redux";
 import "tachyons";
 import { createLogger } from "redux-logger";
-import { searchRobots, requestRobots } from "./reducers.js";
+import { searchRobots, requestRobots } from "./reducers.ts";
 import thunkMiddleware from "redux-thunk";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
@@ -20,7 +20,7 @@ const store = legacy_createStore(
 );
 
 const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error('Failed to find the root element');
+if (!rootElement) throw new Error("Failed to find the root element");
 const root = createRoot(rootElement);
 
 root.render(
